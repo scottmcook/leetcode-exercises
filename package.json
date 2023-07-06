@@ -1,0 +1,19 @@
+{
+  "name": "leetcode-exercises",
+  "version": "1.0.0",
+  "description": "A repo of exercises, solutions, and lessons learned",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottmcook/leetcode-exercises.git"
+  },
+  "author": "Scott Cook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scottmcook/leetcode-exercises/issues"
+  },
+  "homepage": "https://github.com/scottmcook/leetcode-exercises#readme"
+}
