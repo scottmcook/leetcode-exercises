@@ -62,7 +62,7 @@ var map = function (arr, fn) {
 };
 ```
 
-## Opinion - best Leetcode solution
+## Leedcode solutions
 
 In the editorial there were a few solutions and I was surprised when I saw something with `for...in` since I'm more acclimated with using them in objects but it makes sense that it works here since it can be used to iterate over the indices of an array.
 
