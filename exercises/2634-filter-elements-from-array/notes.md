@@ -83,7 +83,7 @@ var filter = function (arr, fn) {
 
 The only note this is the fastest if there are few elements to be removed from the array
 
-## Other learnings
+## Learnings from the editorial summary
 
 - The Nullish Coalescing operator `??` is identical to `||` except it only treats `null` and `undefined` as falsy.
 - The logical operator will return the **last** value it _needed_ to evaluate.
