@@ -1,45 +1,50 @@
-## Intuition
+## Intuition and approach
 
-My intuition was to set a called variable that kept track of whether the function was called or not.
+I knew I needed to set a conditionally set a variable for cacheing the results.
 
-## Approach
+Upon reflection and referencing the _Editorial_, I messed up quite a bit of syntax and learned that the `in` operator can be used outside a `for...in` loop.
 
-I initally flubbed this up because I messed up my conditionals (damn booleans). while this is not the most performative solution I think it's quite readable.
+I learned a new approach of when the arguments are an array of numbers, a convenient way to convert them into a string key is with `JSON.stringify()`.
 
 ## Tutorials
 
-We need to cache the value based on the inputs.
-So if we've already called something, it knows.
+I read the editorial and watched a [Web Dev Simplified](https://www.youtube.com/watch?v=WbwP4w6TpCk) explanation.
 
 ### Use cases
 
-It's good for fetch calls.
+This is good for caching results of a network API call.
+
+A potential downside of memoizing network requests is the risk of data staleness. If the value associated with a particular key in the database changes, the memoized function may still return the old cached result, leaving the user unaware of any updates.
 
 # Code
 
-```
+```javascript
 /**
  * @param {Function} fn
- * @return {Function}
  */
-var once = function(fn) {
-    let called = false;
-    return function(...args){
-      if (called) {
-        return undefined;
-      } else {
-        called = true;
-        return fn(...args);
-      }
+function memoize(fn) {
+  let cache = {};
+  return function (...args) {
+    const key = JSON.stringify(args);
+    console.log(key);
+    if (key in cache) {
+      return cache[key];
+    } else {
+      var functionOutput = fn(...args);
+      cache[key] = functionOutput;
+      return functionOutput;
     }
-};
+  };
+}
 
 /**
- * let fn = (a,b,c) => (a + b + c)
- * let onceFn = once(fn)
- *
- * onceFn(1,2,3); // 6
- * onceFn(2,3,6); // returns undefined without calling fn
+ * let callCount = 0;
+ * const memoizedFn = memoize(function (a, b) {
+ *	 callCount += 1;
+ *   return a + b;
+ * })
+ * memoizedFn(2, 3) // 5
+ * memoizedFn(2, 3) // 5
+ * console.log(callCount) // 1
  */
-
 ```
