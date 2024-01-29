@@ -15,12 +15,12 @@ var maxArea = function(height) {
     maxWater = Math.max(maxWater, water);
 
     while (left < right && height[left] <= minHeight) {
-            left++;
-        }
+      left++;
+    }
 
-        while (left < right && height[right] <= minHeight) {
-            right--;
-        }
+    while (left < right && height[right] <= minHeight) {
+        right--;
+    }
   }
   return maxWater;
 };
